@@ -37,7 +37,7 @@ actor SihirliYaratikKayitDefteri {
     return Trie.find(yaratiklar, anahtar(yaratikKimligi), Nat32.equal);
   };
 
-  // Yarat??in sihirli ozelliklerini guncelleme
+  // Yaratigin sihirli ozelliklerini guncelleme
   public func yaratikGuclendir(yaratikKimligi: YaratikKimligi, guncelYaratik: SihirliYaratik): async Bool {
     let sonuc = Trie.find(yaratiklar, anahtar(yaratikKimligi), Nat32.equal);
     if (Option.isSome(sonuc)) {
@@ -52,7 +52,7 @@ actor SihirliYaratikKayitDefteri {
     return false;
   };
 
-  // Yarat??i kayit defterinden silme
+  // Yaratigi kayit defterinden silme
   public func yaratikSurme(yaratikKimligi: YaratikKimligi): async Bool {
     let sonuc = Trie.find(yaratiklar, anahtar(yaratikKimligi), Nat32.equal);
     if (Option.isSome(sonuc)) {
@@ -67,7 +67,7 @@ actor SihirliYaratikKayitDefteri {
     return false;
   };
 
-  // Tum sihirli yaratiklari listeleme (biraz sihirle!)
+  // Tum sihirli yaratiklari listeleme 
   public query func sihirliAlemListesi(): async [(YaratikKimligi, SihirliYaratik)] {
   Trie.toArray<YaratikKimligi, SihirliYaratik, (YaratikKimligi, SihirliYaratik)>(
     yaratiklar, 
@@ -75,7 +75,7 @@ actor SihirliYaratikKayitDefteri {
   );
 };
 
-  // Bir yarat??in gercekten efsanevi olup olmadigini belirleme
+  // Bir yaratigin gercekten efsanevi olup olmadigini belirleme
   public query func efsaneYaratikMi(yaratikKimligi: YaratikKimligi): async Bool {
     switch (Trie.find(yaratiklar, anahtar(yaratikKimligi), Nat32.equal)) {
       case (null) false;
